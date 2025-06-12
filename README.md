@@ -29,7 +29,8 @@ A set of tools for exporting data and documents from AbraFlexi (FlexiBee) accoun
 
 3. **Run the export script:**
    ```bash
-   php src/export_faktura_prijata_with_attachments.php
+   cd src
+   php export_faktura_prijata_with_attachments.php
    ```
    - Use `-o <output.json>` to specify a report file.
    - Use `-e <envfile>` to specify a custom environment file.
