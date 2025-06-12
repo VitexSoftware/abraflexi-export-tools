@@ -16,6 +16,7 @@ A set of tools for exporting data and documents from AbraFlexi (FlexiBee) accoun
 - PHP 8.0+
 - Composer dependencies (see `composer.json`)
 - `pdfunite` utility (from poppler-utils) for PDF merging
+- `qpdf` utility for encrypted PDF detection
 
 ## Usage
 
@@ -23,11 +24,13 @@ A set of tools for exporting data and documents from AbraFlexi (FlexiBee) accoun
    - Copy `example.env` to `.env` and fill in your AbraFlexi credentials and company code.
 
 2. **Install dependencies:**
+
    ```bash
    composer install
    ```
 
 3. **Run the export script:**
+
    ```bash
    cd src
    php export_faktura_prijata_with_attachments.php
@@ -44,7 +47,8 @@ A set of tools for exporting data and documents from AbraFlexi (FlexiBee) accoun
 - The script fetches all received invoices from AbraFlexi using the API.
 - Each invoice is downloaded as a PDF.
 - All attachments are downloaded. If an attachment is an ISDOCX file, the script extracts any PDF inside and includes it in the merge. ISDOC files are skipped.
-- All PDFs are merged into a single file using `pdfunite`.
+- Encrypted PDFs are detected and skipped using `qpdf`.
+- All unencrypted PDFs are merged into a single file using `pdfunite`.
 
 ## License
 

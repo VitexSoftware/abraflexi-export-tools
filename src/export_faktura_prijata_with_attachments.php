@@ -92,9 +92,20 @@ foreach ($all as $invoice) {
     }
 }
 
-// Merge all PDFs into one
+// Filter out encrypted PDFs before merging
+$unencryptedPdfFiles = [];
+foreach ($pdfFiles as $pdfFile) {
+    $qpdfCheck = shell_exec('qpdf --show-encryption ' . escapeshellarg($pdfFile) . ' 2>&1');
+    if (strpos($qpdfCheck, 'File is not encrypted') !== false) {
+        $unencryptedPdfFiles[] = $pdfFile;
+    } else {
+        $invoices->addStatusMessage('Skipped encrypted PDF: ' . basename($pdfFile), 'warning');
+    }
+}
+
+// Merge all unencrypted PDFs into one
 $outputPdf = getcwd() . '/all-invoices-and-attachments.pdf';
-$mergeCmd = 'pdfunite ' . implode(' ', array_map('escapeshellarg', $pdfFiles)) . ' ' . escapeshellarg($outputPdf);
+$mergeCmd = 'pdfunite ' . implode(' ', array_map('escapeshellarg', $unencryptedPdfFiles)) . ' ' . escapeshellarg($outputPdf);
 
 passthru($mergeCmd, $mergeResult);
 
@@ -105,6 +116,8 @@ if ($mergeResult === 0) {
     $exitcode = 2;
 }
 
+$report['output'] = $outputPdf;
+$report['encrypted_files'] = array_diff($pdfFiles, $unencryptedPdfFiles);
 
 $invoices->addStatusMessage('stage 6/6: saving report', 'debug');
 
