@@ -10,6 +10,7 @@ A set of tools for exporting data and documents from AbraFlexi (FlexiBee) accoun
 - Skip ISDOC (XML) attachments automatically
 - Merge all PDFs (invoices and attachments) into a single PDF file
 - Configurable via `.env` file or command-line options
+- Supports filtering by year, date, or custom FlexiBee filter using `EXPORT_SCOPE`
 
 ## Requirements
 
@@ -22,6 +23,7 @@ A set of tools for exporting data and documents from AbraFlexi (FlexiBee) accoun
 
 1. **Configure environment:**
    - Copy `example.env` to `.env` and fill in your AbraFlexi credentials and company code.
+   - Optionally set `EXPORT_SCOPE` to restrict export by year (e.g. `2024`), date (e.g. `2025-06-12`), or a custom filter (e.g. `datVyst >= '2025-01-01' AND datVyst <= '2025-06-12'`).
 
 2. **Install dependencies:**
 

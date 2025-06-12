@@ -40,7 +40,36 @@ foreach ($files as $file) {
 }
 
 $invoices = new FakturaPrijata();
-$all = $invoices->getColumnsFromAbraFlexi(['id', 'kod'], ['limit'=>0], 'id');
+
+$exportScope = \Ease\Shared::cfg('EXPORT_SCOPE');
+
+if ($exportScope) {
+    // If EXPORT_SCOPE is a year (e.g. 2024), filter by datVyst in that year
+    if (preg_match('/^\\d{4}$/', $exportScope)) {
+        $firstDayOfYear = $exportScope . '-01-01';
+        $lastDayOfYear = $exportScope . '-12-31';
+        $all = $invoices->getColumnsFromAbraFlexi(
+            ['id', 'kod'],
+            [
+                'limit' => 0,
+                "datVyst >= '$firstDayOfYear' AND datVyst <= '$lastDayOfYear'"
+            ],
+            'id'
+        );
+    } else {
+        // Otherwise, just use as a direct filter value (e.g. specific date or custom filter)
+        $all = $invoices->getColumnsFromAbraFlexi(
+            ['id', 'kod'],
+            [
+                'limit' => 0,
+                'filter' => $exportScope
+            ],
+            'id'
+        );
+    }
+} else {
+    $all = $invoices->getColumnsFromAbraFlexi(['id', 'kod'], ['limit'=>0], 'id');
+}
 $pdfFiles = [];
 
 foreach ($all as $invoice) {
