@@ -1,0 +1,25 @@
+{
+    "name": "vitexsoftware/abraflexi-export-tools",
+    "description": "Export from AbraFlexi",
+    "type": "project",
+    "require": {
+        "spojenet/flexibee": "dev-main"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "2.1.x-dev",
+        "phpunit/phpunit": "12.3.x-dev"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Vitexsoftware\\AbraflexiExportTools\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "CyberVitexus",
+            "email": "info@vitexsoftware.cz"
+        }
+    ],
+    "minimum-stability": "dev"
+}
