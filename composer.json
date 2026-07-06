@@ -6,7 +6,7 @@
         "spojenet/flexibee": "dev-main"
     },
     "require-dev": {
-        "phpstan/phpstan": "2.1.x-dev",
+        "phpstan/phpstan": "2.2.5",
         "phpunit/phpunit": "12.3.x-dev"
     },
     "license": "MIT",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "57bb314959bca37656b0a92c93e41e0d",
+    "content-hash": "1e1e1757f8ceb73f26b81a3b2ce00870",
     "packages": [
         {
             "name": "pear/console_getopt",
@@ -653,16 +653,11 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "2.1.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "5b4bf8038101361b04b6f24a322caa78007851b8"
-            },
+            "version": "2.2.5",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/5b4bf8038101361b04b6f24a322caa78007851b8",
-                "reference": "5b4bf8038101361b04b6f24a322caa78007851b8",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/909c1e5fef7989ac0d0c1c5c42e32a5c4f6198a0",
+                "reference": "909c1e5fef7989ac0d0c1c5c42e32a5c4f6198a0",
                 "shasum": ""
             },
             "require": {
@@ -671,7 +666,6 @@
             "conflict": {
                 "phpstan/phpstan-shim": "*"
             },
-            "default-branch": true,
             "bin": [
                 "phpstan",
                 "phpstan.phar"
@@ -685,6 +679,17 @@
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ondřej Mirtes"
+                },
+                {
+                    "name": "Markus Staab"
+                },
+                {
+                    "name": "Vincent Langlet"
+                }
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
             "keywords": [
@@ -708,7 +713,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-06-12T08:25:27+00:00"
+            "time": "2026-07-05T06:31:06+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -2291,7 +2296,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "phpstan/phpstan": 20,
         "phpunit/phpunit": 20,
         "spojenet/flexibee": 20
     },
@@ -2299,5 +2303,5 @@
     "prefer-lowest": false,
     "platform": {},
     "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }
